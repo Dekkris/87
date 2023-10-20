@@ -1,0 +1,134 @@
+#include <locale.h>
+#include <stdio.h>
+#define D 2.54
+#define I 2.32
+#define S 2.7
+#define M 1.852
+#define M2 1.609
+#define M3 1.475
+#define M4 7.468
+#define M5 7412.6
+
+#define KL 0.45
+#define KI 0.0283
+
+#define KL1 136.4
+#define KI1 3.78
+
+#define KL2 1024
+#define KI2 0.00098
+float plos(float u)
+{
+	float re = u * 1024;
+
+	return re;
+}
+float afaf(float h)
+{
+	float W = h * 0.00098;
+	return W;
+}
+
+
+
+float plos1(float v)
+{
+	float r1 = v * 0.45;
+
+	return r1;
+}
+float afaf1(float c)
+{
+	float W1 = c * 0.0283;
+	return W1;
+}
+
+
+
+
+float plos2(float v2)
+{
+	float r2 = v2 * 136.4;
+
+	return r2;
+}
+float afaf2(float c2)
+{
+	float W2 = c2 * 3.78;
+	return W2;
+}
+
+float main()
+{
+	setlocale(LC_ALL, "RUS");
+
+	int num, dub;
+	puts("введите число");
+	scanf_s("%d", &num);
+	printf("Введено число %d \n ", num);
+	puts("введите второе число ");
+	scanf_s("%d", &dub);
+	printf("Введено число %d \n ", dub);
+	printf("Число %d + число %d = число %d\n", num, dub, num + dub);
+	printf("Число %d - число %d = число %d\n", num, dub, num - dub);
+	printf("Число %d * число %d = число %d\n", num, dub, num * dub);
+	printf("Число %d / число %d = число %d\n", num, dub, num / dub);
+
+
+
+	int dym;
+	float result;
+	puts("Введите число");
+	scanf_s("%d", &dym);
+	result = D * dym;
+	printf(" % d английских дюймов – это % .2f см\n", dym, result);
+	result = I * dym;
+	printf(" % d испанских дюймов – это % .2f см\n", dym, result);
+	result = S * dym;
+	printf(" % d старолитовских дюймов – это % .1f см\n", dym, result);
+
+
+	int mil2;
+	float resu;
+	puts("Введите число");
+	scanf_s("%d", &mil2);
+	resu = M * mil2;
+	printf(" % d морских миль – это % .3f км\n", mil2, resu);
+	resu = M2 * mil2;
+	printf(" % d сухопутных миль – это % .3f км\n", mil2, resu);
+	resu = M3 * mil2;
+	printf(" % d римских миль – это % .3f км\n", mil2, resu);
+	resu = M4 * mil2;
+	printf(" % d старорусских миль – это % .3f км\n", mil2, resu);
+	resu = M5 * mil2;
+	printf(" % d географических миль – это % .1f км\n", mil2, resu);
+
+	float z1, z2;
+	puts("введите число a");
+	scanf_s("%f", &z1);
+	puts("введите второе число b ");
+	scanf_s("%f", &z2);
+	puts(" \t-------------------------------------------------------------------------\t");
+	puts(" \t|\t a*d \t|\t a+b \t|\t a-b \t|\t ");
+	puts(" \t-------------------------------------------------------------------------\t");
+	printf(" \t|\t%.2f*%.2f \t|\t %.2f+%.2f \t|\t %.2f-%.2f\t|\t\n ", z1, z2, z1, z2, z1, z2);
+	puts(" \t-------------------------------------------------------------------------\t");
+	printf(" \t|\t %.2f \t| \t %.2f \t|\t %.2f \t|\t\n ", z1 * z2, z1 + z2, z1 - z2);
+	puts(" \t-------------------------------------------------------------------------\t");
+
+	float h, u;//дз 34
+	puts("Введите число для перевода террабитов в гигабайты и гигабайтов в террабиты");
+	scanf_s("%f %f", &h, &u);
+	float Y = plos(u);
+	printf(" %f террабита – это %f гигабайта\n", u, Y);
+	float R = afaf(h);
+	printf(" %.f гигабайта – это %f террабита\n", h, R);
+
+	float v, c;//дз 30
+	puts("Введите число для перевода фунтов и унций в кг");
+	scanf_s("%f %f", &v, &c);
+	float LL = plos1(v);
+	printf(" %f фунтов – это %f кг\n", v, LL);
+	float N = afaf1(c);
+	printf(" %f унций – это %f кг\n", c, N);
+}
