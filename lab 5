@@ -1,0 +1,54 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+#define _USE_MATH_DEFINES
+#define M_PI 3.14159265358979323846
+#define k 8.2
+
+void main()
+{
+	setlocale(LC_CTYPE, "RUS");//1 номер
+	/*int a;
+	puts("Введите значение угла:\n");
+	scanf("%d", &a);
+	printf("Угол %d град равен %.6f", a, sin(a * M_PI / 180));*/
+
+
+	/*float x, a, b, c;//номер 2 и 3
+	int i, n;
+	printf("Введите х:  ");
+	scanf("%f", &x);
+	b = sqrt(fabs(x));;
+	c = pow(b, 4) + pow(k, 3);
+	a = pow(log(c), 3) + exp(-1 * x);
+	printf("\nln^3(y)+e^(-x)=%.2f\n", a);//1
+	printf(" sqrt(|x|)=%.2f \n", b);//2
+	printf("b^4+k^3=%.2f\n", c);//3
+	i = (int)a % 2 || (int)b % 2;
+	n = (int)a / 3 && (int)b / 3 && (int)c / 3;
+	printf("Условие 1 выполнено (1 - да, 0 - нет): %d\n", i);
+	printf("Условие 2 выполнено (1 - да, 0 - нет): %d\n", n);*/
+
+
+	/*float x, y, z, B;
+	printf("Введите x: \n");
+	scanf("%f", &x);
+	printf("Введите y: \n");
+	scanf("%f", &y);
+	printf("Введите z: \n");
+	scanf("%f", &z);
+	float ch1, ch2, ch3, ch4, ch5, ch6, ch7,ch8,ch9,ch10;
+	ch1 = pow(x, 1 / 3);
+	ch2 = y + 2;
+	ch3 = pow(x, ch2);
+	ch4 = ch1 + ch3;
+	ch5 = 10 * ch4;
+	ch6 = sqrt(ch5);
+	ch7 = x - y;
+	ch8 = fabs(ch7);
+	ch9 = pow(asin(z),2);
+	ch10 = ch9 - ch8;
+	B = ch6 * ch10;
+	printf("sqrt(10*(^3sqre(x)+x^(y+2)))*(arcsin^2(z)-|x-y|)=%.6f", B);*/
+}
