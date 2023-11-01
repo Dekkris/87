@@ -1,0 +1,125 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <math.h>
+#define _CRT_NO_WARNINGS
+
+
+
+void main(void)
+{
+	setlocale(LC_ALL, "RUS");
+
+	//Задание 1
+	/*char c;
+	printf("Введите цифру или букву: ");
+	scanf("%c", &c);
+
+	switch (c)
+	{
+	case '0':
+		puts("Введена цифра.\n");
+		break;
+	case '1':
+		puts("Введена цифра.\n");
+		break;
+	case '2':
+		puts("Введена цифра.\n");
+		break;
+	case '3':
+		puts("Введена цифра.\n");
+		break;
+	case '4':
+		puts("Введена цифра.\n");
+		break;
+	case '5':
+		puts("Введена цифра.\n");
+		break;
+	case '6':
+		puts("Введена цифра.\n");
+		break;
+	case '7':
+		puts("Введена цифра.\n");
+		break;
+	case '8':
+		puts("Введена цифра.\n");
+		break;
+	case '9':
+		puts("Введена цифра.\n");
+		break;
+	default:
+		printf("Введена буква\n");
+	}*/
+
+
+	//Задание 2
+
+	/*float x, y;
+	char c;
+	printf("Введите пример:\n");
+	scanf("%f%c%f\n", &x, &c, &y);
+	switch (c)
+	{
+	case '-':
+		printf("=%f\n", x - y);
+		break;
+	case '+':
+		printf("=%f\n", x + y);
+		break;
+	case '/':
+		printf("=%f\n", x / y);
+		break;
+	case '*':
+		printf("=%f\n", x * y);
+		break;
+	default:
+		printf("Пример не распознан\n");
+		break;
+	}*/
+
+
+	// Получаем номер дня недели, на который приходится 1 января
+	int fd;
+	printf("Введите номер дня недели, на который приходится 1 января (0 - воскресенье, 1 - понедельник, и т.д.): ");
+	scanf("%d", &fd);
+
+	// Получаем номер дня в году
+	int k;
+	printf("Введите номер дня в году: ");
+	scanf("%d", &k);
+
+	// Определяем, каким днем недели является k-й день невисокосного года
+	int dw = (fd + k - 1) % 7;
+
+	// Выводим результат
+	switch (dw) 
+	{
+	case 0:
+		printf("Понедельник\n");
+		break;
+	case 1:
+		printf("Вторник\n");
+		break;
+	case 2:
+		printf("Среда\n");
+		break;
+	case 3:
+		printf("Четверг\n");
+		break;
+	case 4:
+		printf("Пятница\n");
+		break;
+	case 5:
+		printf("Суббота\n");
+		break;
+	case 6:
+		printf("Воскресенье\n");
+		break;
+	default:
+		printf("Неверный день недели\n");
+		break;
+	}
+
+	return 0;
+ }
