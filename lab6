@@ -1,0 +1,53 @@
+#include <locale.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    setlocale(LC_ALL, "RUS");
+    int g;       // 1z
+    puts("Введите год\n");
+    scanf_s("%d", &g);
+    if (g % 4 != 0 || g % 100 != 0 && g % 400 == 0)
+    {
+        printf("Год не високосный\n");
+
+    }
+    else
+    {
+        printf("Год високосный\n");
+    }
+
+
+    int x;   // 2z
+    puts("Введите число\n");
+    scanf_s("%d", &x);
+    if (x <= 7)
+    {
+        printf("%d\n", 3*x-9);
+    }
+    else
+    {
+        printf("%.3f\n", (1 / (pow(x,2) - 4)));
+    }
+
+
+    int y;    //3z
+    puts("Введите трёхзначное число:\n");
+    scanf_s("%d", &y);
+    if (y < 1000)
+    {
+        if (y % 10 == 5 || y / 10 % 10 == 5 || y / 100 % 10 == 5)
+        {
+            puts("В данное число входит цифра 5\n");
+        }
+        else
+        {
+            puts("В данное число не входит цифра 5\n");
+        }
+    }
+    else
+    {
+        printf("введите другое число\n");
+        return(0);
+    }
+}
