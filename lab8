@@ -1,0 +1,86 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+#define A 1
+#define B 3
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+	//z0
+	int i, num;
+	char sym;
+
+	printf("Введите количество печатаемых символов: ");
+	scanf("%d", &num);
+
+	printf("Введите символ: ");
+	scanf(" %c", &sym); 
+
+	// 1) Символ '+' в начале и в конце
+	printf("+");
+	for (i = 0; i < num; i++) 
+	{
+		printf("%c", sym);
+	}
+	printf("+\n");
+
+	// 2) Первая половина символов и вторая половина разных символов
+	for (i = 0; i < num / 2; i++) 
+	{
+		printf("%c", sym);
+	}
+	for (i = 0; i < num / 2; i++) 
+	{
+		printf("-");
+	}
+	if (num % 2 != 0) {
+		printf("%c", sym);
+	}
+	printf("\n");
+
+	// 3) После каждого символа символ восклицательного знака
+	for (i = 0; i < num; i++) 
+	{
+		printf("%c!", sym);
+	}
+	printf("\n");
+
+	return 0;
+
+	/*int n, m; //Задание 1
+	scanf_s("%d", &n);
+	scanf_s("%d", &m);
+	long int sum = 0;
+	long int i = 0;
+	for (i = m; i >= n; i--)
+	{
+		sum += i;
+	}
+	printf("Резуальтат %d\n", sum);
+
+	puts("x^3 - 4x^2 + 2"); //Задание 2
+	float x, y, o;
+	scanf_s("%f", &y);
+	for (x = A; x < B + y; x += y)
+	{
+		o = pow(x, 3) - 4 * pow(x, 2) + 2;
+		printf("| %.1f | %.1f |\n", x, y);
+	}*/
+
+
+	int a, n; // z 3
+	printf("Введите значения a и n: ");
+	scanf("%d %d", &a, &n);
+
+	int result = 1; // Инициализируем результат значением 1
+
+	for (int i = 0; i <= n; i++) 
+	{
+		result *= (a - i * i);
+	}
+
+	printf("Значение ряда: %d\n", result);
+
+	return 0;
+}
