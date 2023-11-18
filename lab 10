@@ -1,0 +1,96 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <math.h>
+char t;
+double x;
+double fa(double x)//z1
+{
+	double y;
+	printf("Введите значение x для функции fa(x): \n");
+	scanf ("%lf", &x);
+	if (x <= 3)
+	{
+		y = pow(x, 2) - (3 * x) + 9;
+	}
+	else
+	{
+		y = 1 / (pow(x, 3) + 3);
+	}
+	return y;
+}
+double fb(double x)//z1`
+{
+	double y;
+	printf("Введите значение x для функции fb(x): \n");
+	scanf("%lf", &x);
+	y = x * exp(sin(pow(x, 2)));
+	return y;
+}
+
+
+void drawTritangle(int N1)
+{
+	int visota = N1 / 2 + 1;
+	int osnovanie = N1;
+	int k = 0;
+	for (int i = 0; i < visota; i++)
+	{
+		for (int j = 0; j <= osnovanie; j++)
+		{
+			if (j == osnovanie / 2 - k || j == osnovanie / 2 + k)
+			{
+				printf("*");
+			}
+			else
+			{
+				printf(" ");
+			}
+
+		}
+		printf("\n");
+		k++;
+	}
+	for (int i = 0; i <= N1; i++)
+	{
+		printf("*");
+	}
+	printf("\n");
+}
+
+void main(void)
+{
+	setlocale(LC_ALL, "RUS");
+	double a, b;//z1
+	a = fa(x);
+	b = fb(x);
+	printf("Значение функции fa(x) = %.3lf \t Значение функции fb(x) = %.3lf\n\n", a, b);
+	printf("Произведение этих двух функций = %lf\n\n", a * b);
+	printf("Разность квадратов этих двух функций = %lf\n\n", pow(a, 2) - pow(b, 2));
+	printf("Удвоенная сумма этих двух функций = %lf\n\n", 2 * (a + b));
+
+
+	//z2
+	char l;
+	do {
+		char t;
+		printf("Это треугольник\n");
+		printf("Его нарисовать? <Да - y, Нет - введите n>\n");
+		scanf(" %c", &t);
+		if (t == 'n') 
+		{
+			break;
+		}
+		else
+		{
+			printf("Введите основание\n");
+			int N1;
+			scanf("%d", &N1);
+			drawTritangle(N1);
+		}
+		printf("Повторить программу? Да - y , Нет - введите n>\n");
+		scanf(" %c", &l);
+	} while (l != 'n');
+}
+
