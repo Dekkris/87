@@ -1,0 +1,91 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+#define ROW 5
+#define COL 5
+
+int zn(int n)
+{
+	int sum = 0;
+
+	while (n > 0)
+	{
+		int o = n % 10;
+		sum += o;
+		n /= 10;
+	}
+
+	return sum;
+}
+
+void main()
+{
+	int row, col;//z1
+	printf("\n");
+	for (row = 1; row <= ROW; row++)
+	{
+		for (col = 1; col <= row; col++)
+			printf("%5d", row);
+		printf("\n");
+	}
+	system("pause");
+
+
+
+
+	setlocale(LC_CTYPE, "RUS");
+	while (1)//z2
+	{
+		int num;
+		printf("Введите число: ");
+		scanf("%d", &num);
+		int sum = zn(num);
+		if (sum >= 7)
+		{
+			printf("Сумма цифр числа больше или равна 7\n");
+		}
+		else
+		{
+			printf("Сумма цифр числа меньше 7\n");
+		}
+		char p;
+		printf("Продолжить? (Да - y, нет - n) ");
+		getchar();
+		scanf("%c", &p);
+		if (p == 'n')
+		{
+			break;
+		}
+	}
+
+
+	int h;//z3
+	char s;
+	int f;
+	printf("Введите высоту треугольника: ");
+	scanf("%d", &h);
+	printf("Введите символ для рисования: ");
+	scanf(" %c", &s);
+	printf("Заполнить контур треугольника? (1 - да, 0 - нет): ");
+	scanf("%d", &f);
+	for (int i = 1; i <= h; i++) {
+		for (int j = 1; j <= h - i; j++) 
+		{
+			printf(" ");
+		}
+		for (int j = 1; j <= i * 2 - 1; j++) 
+		{
+			if (f || i == h || j == 1 || j == i * 2 - 1) 
+			{
+				printf("%c", s);
+			}
+			else {
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
