@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #define SCREENW 60
 #define SCREENH 40
-typedef double (*TFunc)(double);
+
 
 double F1(double x)
 {
@@ -63,7 +63,7 @@ double F2(double x)
     }
     printf("------------------------\n");
 }*/
-
+typedef double (*TFunc)(double);
 void plot(double x0, double x1, TFunc f)
 {
     char screen[SCREENW][SCREENH];
