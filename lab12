@@ -1,0 +1,70 @@
+include <locale.h>
+#include <stdio.h>
+#include<math.h>
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+		char* pc;//z1
+		int* pi;
+		double* pd;
+		printf("Размер указателя на %lu\n", sizeof(pc));
+		printf("Размер указателя на int: %lu\n", sizeof(pi));
+		printf("Размер указателя на double: %lu\n", sizeof(pd));
+
+	float PI = 3.14159, * p1, * p2;        //2z
+	p1 = p2 = &PI;
+	printf("По адресу p1=%p хранится *p1=%g\n", p1, *p1);
+	printf("По адресу p2=%p хранится *p2=%g\n", p2, *p2);
+
+
+	double* pа, * pb, x = 5;                   //3z
+
+	pа = pb = &x;
+	printf("По адресу %p хранится *ptr=%g\n", pb, *pb);
+
+	pа++;
+	printf("По адресу %p хранится *ptr=%g\n", pb, *pb);
+
+	pа--;
+	printf("По адресу %p хранится *ptr=%g\n", pb, *pb);
+
+
+
+	float array[10] = { 1.1, 2.2, 3.3, 4.4 , 5.5, 6.6, 7.7, 8.8, 9.9, 10.1 };    //4z
+
+	float* ptr_a = array;
+	printf(" %p    %p    %p\n", (void*)array, (void*)&array[0], (void*)&array);
+	printf("адрес  элемента массива: %d \n", *(ptr_a++));
+	printf("адрес  элемента массива: %d \n", *(ptr_a + 4));
+	printf("адрес  элемента массива: %d \n", *(ptr_a - 2));
+
+
+	ptr_a = &array[0];
+	for (float* ptr_a = array; ptr_a <= &array[9]; ptr_a += 2)
+	{
+		printf("значение %.1f \n", *ptr_a);
+	}
+
+	puts("");
+	puts("");
+
+
+	ptr_a = &array[9];
+	for (float* ptr_a = &array[9]; ptr_a >= &array[0]; ptr_a--)
+	{
+		printf("значение %.1f \n", *ptr_a);
+	}
+	puts("");
+
+	int o = 0x1234567;         //5z
+	int* prt;
+	unsigned char* a1, * a2, * a3, * a5;
+	unsigned char* a;
+	prt = &o;
+	a = (unsigned char*)prt;
+	a1 = a + 3;
+	a2 = a + 2;
+	a3 = a + 1;
+	a5 = a;
+	printf("%p\n%p\n%p\n%p\n", *a1, *a2, *a3, *a5);
+}
