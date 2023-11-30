@@ -29,39 +29,39 @@ double F2(double x)
     }
 }
 
-void pT(double xc, double xv, double h, double (*function)(double), char sn, char sk)
+void pT(double minx, double maxx, double h, double (*function)(double), char skob1, char skob2)
 {
     printf("x\t|\tF(x)\n");
-    printf("------------------------\n");
-    if (sn == '[' && sk == ']')
+    printf("Начало\n");
+    if (skob1 == '[' && skob2 == ']')
     {
-        for (double x = xc; x <= xv; x += h)
+        for (double x = minx; x <= maxx; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
-    if (sn == '[' && sk == ')')
+    if (skob1 == '[' && skob2 == ')')
     {
-        for (double x = xc; x < xv; x += h)
+        for (double x = minx; x < maxx; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
-    if (sn == '(' && sk == ']')
+    if (skob1 == '(' && skob2 == ']')
     {
-        for (double x = xc + h; x <= xv; x += h)
+        for (double x = minx + h; x <= maxx; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
-    if (sn == '(' && sk == ')')
+    if (skob1 == '(' && skob2 == ')')
     {
-        for (double x = xc + h; x < xv; x += h)
+        for (double x = minx + h; x < maxx; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
-    printf("------------------------\n");
+    printf("Конец\n");
 }
 typedef double (*TFunc)(double);
 void plot(double x0, double x1, TFunc f)
@@ -118,17 +118,18 @@ int main()
 {
     setlocale(LC_ALL, "RUS");
     int n;
-    double x, xc, xv, h;
-    char sk = '.', sn = '.';
+    double x, minx, maxx, h;
+    char skob1 = '.', skob2 = '.';
     while (1)
     {
         printf("Выберите действие:\n");
-        printf("1. Найти значение функции F1(x) при заданном значении аргумента x.\n");
-        printf("2. Найти значение функции F2(x) при заданном значении аргумента x.\n");
-        printf("3. Вычислить значения функции F1(x) на заданном интервале.\n");
-        printf("4. Вычислить значения функции F2(x) на заданном интервале.\n");
-        printf("5. Построить график функций F1(x) и F2(x).\n");
-        printf("6. Завершить работу.\n");
+        printf("1. Значение функции F1(x) при заданном x\n");
+        printf("2. Значение функции F2(x) при заданном x\n");
+        printf("3. Найти значения функции F1(x) на заданном интервале.\n");
+        printf("4. значения функции F2(x) на заданном интервале.\n");
+        printf("5. Построить график функций F1(x).\n");
+        printf("6. Построить график функций F2(x).\n");
+        printf("7. Завершить работу.\n");
         printf("> ");
         scanf("%d", &n);
         getchar();
@@ -146,39 +147,37 @@ int main()
             printf("F2(%.2lf) = %.2lf\n", x, F2(x));
             break;
         case 3:
-            printf("Введите промежуток x: ");
-            scanf("%c%lf ; %lf%c", &sn, &xc, &xv, &sk);
+            printf("Введите промежуток x включая скобки: ");
+            scanf("%c%lf ; %lf%c", &skob1, &minx, &maxx, &skob2);
             printf("Введите шаг h: ");
             scanf("%lf", &h);
             printf("Таблица значений функции F1(x):\n");
-            pT(xc, xv, h, F1, sn, sk);
+            pT(minx, maxx, h, F1, skob1, skob2);
             break;
         case 4:
-            printf("Введите промежуток x: ");
-            scanf("%c%lf ; %lf%c", &sn, &xc, &xv, &sk);
+            printf("Введите промежуток x включая скобки: ");
+            scanf("%c%lf ; %lf%c", &skob1, &minx, &maxx, &skob2);
             printf("Введите шаг h: ");
             scanf("%lf", &h);
             printf("Таблица значений функции F2(x):\n");
-            pT(xc, xv, h, F2, sn, sk);
+            pT(minx, maxx, h, F2, skob1, skob2);
             break;
         case 5:
-            printf("Выберите функцию для создания графика (1 - F1, 2 - F2): ");
-            scanf("%d", &n);
-            printf("Введите промежуток x: ");
-            scanf("%lf ; %lf", &xc, &xv);
-            if (n == 1)
-            {
-                plot(xc, xv, F1);
-            }
-            else
-            {
-                plot(xc, xv, F2);
-            }
+            printf("Построение графика  функции F1:\n");
+            printf("Введите промежуток x(мин и макс): ");
+            scanf("%lf ; %lf", &minx, &maxx);
+            plot(minx, maxx, F1);
             break;
         case 6:
+            printf("Построение графика  функции F2:\n");
+            printf("Введите промежуток x(мин и макс): ");
+            scanf("%lf ; %lf", &minx, &maxx);
+            plot(minx, maxx, F2);
+            break;
+        case 7:
             return 0;
         default:
-            printf("Неправильный выбор. Попробуйте еще раз.\n");
+            printf("Некорректный выбор. Попробуйте еще раз.\n");
             break;
         }
         printf("\n");
