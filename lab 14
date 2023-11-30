@@ -1,24 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <locale.h>
 #include <stdio.h>
 #include<math.h>
-double* elements(double* array, double n)
+double* full_elements(double* array, int n)
 {
 	srand((unsigned)time(NULL));
 	for (int i = 0; i < n; i++)
-		array[i] = -10 + rand() % 41;
+		array[i] = 0 + rand() % 41;
 	return array;
 }
-int put_el(double* array, int n)
+int put_elements(double* array, int n)
 {
 	for (int i = 0; i < n; i++)
 		printf(" a[%d]= %.1lf\n", i, array[i]);
 }
-double calc_els(double* array, int n) // -обработка элементов массива
+double* calc_elements(double* array, int n)
 {
 	for (int i = 0; i < n; i++)
 		array[i] = pow(array[i], 2);
 }
-double sum_el(double* array, int begin)  // -сумма элементов массива
+double sum_elements(double* array, int begin)
 {
 	int sum = 0;
 	for (int i = 0; i < begin; i++)
@@ -26,43 +27,45 @@ double sum_el(double* array, int begin)  // -сумма элементов ма�
 		sum += array[i];
 	}
 }
-int find_el(int* array, int n, int element)
+int find_elements(int* array, int n, int element)
 {
 	int i;
 	for (i = 0; i < n; i++)
 		if (array[i] < 0 && array[i] == element)
 			return i;
-	return -1;
+	return 0;
 }
 int max(int* array, int n)
 {
-	int max1 = 0;
 	for (int i = 0; i < n; i++)
 	{
-		if (array[max1] > array[i])
-			array[max1] = array[i];
+		int imax = 0;
+		if (array[i] > array[imax])
+		{
+			imax == i;
+		}
+		return imax;
 	}
+	return 0;
 }
+
+
 void main()
 {
 	setlocale(LC_ALL, "RUS");
 	const double N = 12;
 	double array[12];
-	int size, na, ko;
-	printf("Введите размер массива > \n");
-	scanf_s("%d", &size);
-	scanf_s("%d", &na);
-	/*srand((unsigned)time(NULL));
-for (int i = 0; i < N; i++)
-	array[i] = -10 + rand() % 41;
-for (int i = 0; i < N; i++)
-	printf("\n a[%d]= %.1lf\n", i, array[i]);*/
-	elements(array, size);
-	calc_elements(array, size);
+	int size, n, k;
+	printf("Введите размер массива > ");
+	scanf("%d", &size);
+	printf("Введите a:");
+	scanf("%d", &n);
+	full_elements(array, size);
 	put_elements(array, size);
+	printf("вычисления суммы элементов массива:\n");
 	printf("%.1lf\n", sum_elements(array, size));
-	printf("%d", find_element(array, size, na));
+	printf("функцию поиска элемента равного а :");
+	printf(" %d\n", find_elements(array, size, n));
+	printf("вычисления max элементов массива:\n");
 	printf("%d", max(array, size));
-
-
 }
