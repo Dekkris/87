@@ -1,0 +1,136 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <math.h>
+#include <limits.h>
+#define N 10 ;
+
+void n6(void)//z1
+{
+	setlocale(LC_ALL, "RUS");
+	float temp;
+	float A[10];
+	float B[10];
+	int C[10];
+	for (int i = 0; i < 10; i++)
+	{
+		printf("a[i] =", i + 1);
+		scanf("%f", &temp);
+		C[i] = i;
+		B[i] = temp;
+		A[i] = -A[i];
+	}
+	printf("| исходное значение  | \t | индекс     |   | новое значение |\n");
+	for (int k = 0; k < 10; k++)
+	{
+		printf("|  %.0f                 |\t |  %d         |   |   %.0f           | \n", B[k], C[k], A[k]);
+	}
+}
+
+void main(void)
+{
+	setlocale(LC_ALL, "RUS");
+	n6();
+	float A[10];
+	float temp;
+	float S = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		printf("A[%d]=", i);
+		scanf("%f", &temp);
+		A[i] = temp;
+		S = S + A[i];
+	}
+	S = S / 10;
+	printf("Среднее арифметическое = %f\n", S);
+}
+
+
+int main()//z2
+{
+	setlocale(LC_ALL, "RUS");
+	int p, i, neg1 = -1, neg2 = -1;
+	float sum = 0, count = 0;
+	printf("Введите количество элементов в массиве: ");
+	scanf("%d", &p);
+	if (p <= 0) 
+	{
+		printf("Количество элементов должно быть больше 0.\n");
+		return 0;
+	}
+	int arr[] = { p };
+	printf("Введите элементы массива:\n");
+	for (i = 0; i < p; i++) 
+	{
+		scanf("%d", &arr[i]);
+		if (arr[i] < 0) 
+		{
+			if (neg1 == -1) 
+			{
+				neg1 = i;
+			}
+			else 
+			{
+				neg2 = i;
+				break;
+			}
+		}
+	}
+	if (neg1 != -1 && neg2 != -1 && neg1 < neg2) 
+	{
+		for (i = neg1 + 1; i < neg2; i++) 
+		{
+			sum += arr[i];
+			count++;
+		}
+		if (count) 
+		{
+			float sz = sum / count;
+			printf("Среднее значение элементов массива между первым и вторым отрицательными элементами: %.2f\n", sz );
+		}
+		else 
+		{
+			printf("В указанном диапазоне нет элементов для подсчета среднего значения.\n");
+		}
+	}
+	else 
+	{
+		printf("В массиве меньше чем 2 отрицательных элемента или они находятся в неправильном порядке.\n");
+	}
+	return 0;
+}
+
+//z3
+/*
+float Func(float x) 
+{
+	return pow(x, 3) - 4 * pow(x, 2) + 2;
+}
+int main() 
+{
+	float arr[100];
+	float sumPl = 0, sumMi = 0;
+	int countPl = 0, countMi = 0;
+	for (int i = 0; i < 100; i++) 
+	{
+		float x = 1 + (float)i * 0.02; // интервал [1:3] равномерно разбит на 100 частей
+		float y = Func(x);
+		arr[i] = y;
+		if (y > 0) 
+		{
+			sumPl += y;
+			countPl++;
+		}
+		else 
+		{
+			sumMi += y;
+			countMi++;
+		}
+	}
+	float avgPl = countPl > 0 ? sumPl / countPl : 0;
+	float avgMi = countMi > 0 ? sumMi / countMi : 0;
+	printf("Накопленное значение положительных элементов: %f; Число положительных элементов: %d; Среднее значение положительных элементов: %f\n", sumPl, countPl, avgPl);
+	printf("Накопленное значение отрицательных элементов: %f; Число отрицательных элементов: %d; Среднее значение отрицательных элементов: %f\n", sumMi, countMi, avgMi);
+	return 0;
+}*/
