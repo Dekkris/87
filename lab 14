@@ -1,0 +1,68 @@
+#include <locale.h>
+#include <stdio.h>
+#include<math.h>
+double* elements(double* array, double n)
+{
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < n; i++)
+		array[i] = -10 + rand() % 41;
+	return array;
+}
+int put_el(double* array, int n)
+{
+	for (int i = 0; i < n; i++)
+		printf(" a[%d]= %.1lf\n", i, array[i]);
+}
+double calc_els(double* array, int n) // -обработка элементов массива
+{
+	for (int i = 0; i < n; i++)
+		array[i] = pow(array[i], 2);
+}
+double sum_el(double* array, int begin)  // -сумма элементов массива
+{
+	int sum = 0;
+	for (int i = 0; i < begin; i++)
+	{
+		sum += array[i];
+	}
+}
+int find_el(int* array, int n, int element)
+{
+	int i;
+	for (i = 0; i < n; i++)
+		if (array[i] < 0 && array[i] == element)
+			return i;
+	return -1;
+}
+int max(int* array, int n)
+{
+	int max1 = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (array[max1] > array[i])
+			array[max1] = array[i];
+	}
+}
+void main()
+{
+	setlocale(LC_ALL, "RUS");
+	const double N = 12;
+	double array[12];
+	int size, na, ko;
+	printf("Введите размер массива > \n");
+	scanf_s("%d", &size);
+	scanf_s("%d", &na);
+	/*srand((unsigned)time(NULL));
+for (int i = 0; i < N; i++)
+	array[i] = -10 + rand() % 41;
+for (int i = 0; i < N; i++)
+	printf("\n a[%d]= %.1lf\n", i, array[i]);*/
+	elements(array, size);
+	calc_elements(array, size);
+	put_elements(array, size);
+	printf("%.1lf\n", sum_elements(array, size));
+	printf("%d", find_element(array, size, na));
+	printf("%d", max(array, size));
+
+
+}
