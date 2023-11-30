@@ -29,40 +29,40 @@ double F2(double x)
     }
 }
 
-/*void pT(double xn, double xk, double h, double (*function)(double), char sn, char sk)
+void pT(double xc, double xv, double h, double (*function)(double), char sn, char sk)
 {
     printf("x\t|\tF(x)\n");
     printf("------------------------\n");
     if (sn == '[' && sk == ']')
     {
-        for (double x = xn; x <= xk; x += h)
+        for (double x = xc; x <= xv; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
     if (sn == '[' && sk == ')')
     {
-        for (double x = xn; x < xk; x += h)
+        for (double x = xc; x < xv; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
     if (sn == '(' && sk == ']')
     {
-        for (double x = xn + h; x <= xk; x += h)
+        for (double x = xc + h; x <= xv; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
     if (sn == '(' && sk == ')')
     {
-        for (double x = xn + h; x < xk; x += h)
+        for (double x = xc + h; x < xv; x += h)
         {
             printf("%.2lf\t|\t%.2lf\n", x, function(x));
         }
     }
     printf("------------------------\n");
-}*/
+}
 typedef double (*TFunc)(double);
 void plot(double x0, double x1, TFunc f)
 {
@@ -118,7 +118,7 @@ int main()
 {
     setlocale(LC_ALL, "RUS");
     int n;
-    double x, xс, xk, h;
+    double x, xc, xv, h;
     char sk = '.', sn = '.';
     while (1)
     {
@@ -147,38 +147,38 @@ int main()
             break;
         case 3:
             printf("Введите промежуток x: ");
-            scanf("%c%lf ; %lf%c", &sn, &xс, &xk, &sk);
+            scanf("%c%lf ; %lf%c", &sn, &xc, &xv, &sk);
             printf("Введите шаг h: ");
             scanf("%lf", &h);
             printf("Таблица значений функции F1(x):\n");
-            pT(xс, xk, h, F1, sn, sk);
+            pT(xc, xv, h, F1, sn, sk);
             break;
         case 4:
             printf("Введите промежуток x: ");
-            scanf("%c%lf ; %lf%c", &sn, &xс, &xk, &sk);
+            scanf("%c%lf ; %lf%c", &sn, &xc, &xv, &sk);
             printf("Введите шаг h: ");
             scanf("%lf", &h);
             printf("Таблица значений функции F2(x):\n");
-            pT(xс, xk, h, F2, sn, sk);
+            pT(xc, xv, h, F2, sn, sk);
             break;
         case 5:
-            printf("Выберите функцию для построения графика (1 - F1, 2 - F2): ");
+            printf("Выберите функцию для создания графика (1 - F1, 2 - F2): ");
             scanf("%d", &n);
             printf("Введите промежуток x: ");
-            scanf("%lf ; %lf", &xс, &xk);
+            scanf("%lf ; %lf", &xc, &xv);
             if (n == 1)
             {
-                plot(xс, xk, F1);
+                plot(xc, xv, F1);
             }
             else
             {
-                plot(xс, xk, F2);
+                plot(xc, xv, F2);
             }
             break;
         case 6:
             return 0;
         default:
-            printf("Некорректный выбор. Попробуйте еще раз.\n");
+            printf("Неправильный выбор. Попробуйте еще раз.\n");
             break;
         }
         printf("\n");
