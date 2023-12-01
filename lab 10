@@ -59,19 +59,71 @@ void drawTritangle(int N1)
 	printf("\n");
 }
 
+
+int Factrl(int n) 
+{
+	int result = 1;
+	for (int i = 1; i <= n; i++) 
+	{
+		result *= i;
+	}
+	return result;
+}
+
+double sin_std(double x) 
+{
+	return sin(x);
+}
+
+double sin_n(double x, int N) 
+{
+	float res;
+	res = (pow(-1, N - 1)) * ((pow(x, (2 * N - 1))) / (Factrl(2 * N - 1)));
+	return res;
+}
+
+float sin_eps(float x, float eps)
+{
+	double result = 0.0;
+	double term = x;
+	int sign = 1;
+	int k = 1;
+	while (fabs(term) >= eps) 
+	{
+		result += term;
+		sign *= -1;
+		k++;
+		term = pow(x, 2 * k - 1) / Factrl(2 * k - 1) * sign;
+	}
+	return result;
+}
+
+
 void main(void)
 {
 	setlocale(LC_ALL, "RUS");
 	double a, b;//z1
 	a = fa(x);
 	b = fb(x);
+	double eps;
+	int x1;
+	int N;
 	printf("Значение функции fa(x) = %.3lf \t Значение функции fb(x) = %.3lf\n\n", a, b);
 	printf("Произведение этих двух функций = %lf\n\n", a * b);
 	printf("Разность квадратов этих двух функций = %lf\n\n", pow(a, 2) - pow(b, 2));
 	printf("Удвоенная сумма этих двух функций = %lf\n\n", 2 * (a + b));
+	puts("вычиление sin(x)");
+	printf("Введите значение x: ");
+	scanf("%lf", &x1);
+	printf("Введите количество членов ряда N: ");
+	scanf("%d", &N);
+	printf("Введите точность вычисления eps: ");
+	scanf("%lf", &eps);
+	printf("sin(x) с помощью sin(x) из стандартной библиотеки: %lf\n", sin_std(x1));
+	printf("sin(x) с помощью суммирования ряда с %d членами: %lf\n", N, sin_n(x1, N));
+	printf("sin(x) с помощью суммирования ряда с точностью eps: %lf\n", sin_eps(x1, eps));
 
-
-	//z2
+	//z3
 	char l;
 	do {
 		char t;
@@ -93,4 +145,3 @@ void main(void)
 		scanf(" %c", &l);
 	} while (l != 'n');
 }
-
