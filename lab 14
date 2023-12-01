@@ -13,11 +13,13 @@ int put_elements(double* array, int n)
 {
 	for (int i = 0; i < n; i++)
 		printf(" a[%d]= %.1lf\n", i, array[i]);
+	return n;
 }
 double* calc_elements(double* array, int n)
 {
 	for (int i = 0; i < n; i++)
 		array[i] = pow(array[i], 2);
+	return array;
 }
 double sum_elements(double* array, int begin)
 {
@@ -26,6 +28,7 @@ double sum_elements(double* array, int begin)
 	{
 		sum += array[i];
 	}
+	return sum;
 }
 int find_elements(int* array, int n, int element)
 {
@@ -35,19 +38,20 @@ int find_elements(int* array, int n, int element)
 			return i;
 	return 0;
 }
-int max(int* array, int n)
+int max(double* array, int n) 
 {
-	for (int i = 0; i < n; i++)
+	int imax = 0;
+	for (int i = 1; i < n; i++) 
 	{
-		int imax = 0;
-		if (array[i] > array[imax])
+		if (array[i] > array[imax]) 
 		{
-			imax == i;
+			imax = i;
 		}
-		return imax;
 	}
-	return 0;
+	return imax;
 }
+
+
 
 
 void main()
@@ -55,6 +59,7 @@ void main()
 	setlocale(LC_ALL, "RUS");
 	const double N = 12;
 	double array[12];
+	
 	int size, n, k;
 	printf("Введите размер массива > ");
 	scanf("%d", &size);
@@ -62,10 +67,10 @@ void main()
 	scanf("%d", &n);
 	full_elements(array, size);
 	put_elements(array, size);
+	int maxIndex = max(array, size);
 	printf("вычисления суммы элементов массива:\n");
 	printf("%.1lf\n", sum_elements(array, size));
 	printf("функцию поиска элемента равного а :");
 	printf(" %d\n", find_elements(array, size, n));
-	printf("вычисления max элементов массива:\n");
-	printf("%d", max(array, size));
+	printf("Индекс максимального элемента: %d\n", maxIndex);
 }
