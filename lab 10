@@ -77,12 +77,15 @@ double sin_std(double x)
 
 double sin_n(double x, int N) 
 {
-	float res;
-	res = (pow(-1, N - 1)) * ((pow(x, (2 * N - 1))) / (Factrl(2 * N - 1)));
+	double res = 0.0;
+	for (int i = 1; i <= N; i++) 
+	{
+		res += pow(-1, i - 1) * (pow(x, (2 * i - 1)) / Factrl(2 * i - 1));
+	}
 	return res;
 }
 
-float sin_eps(float x, float eps)
+double sin_eps(double x, double eps) 
 {
 	double result = 0.0;
 	double term = x;
@@ -114,7 +117,7 @@ void main(void)
 	printf("Удвоенная сумма этих двух функций = %lf\n\n", 2 * (a + b));
 	puts("вычиление sin(x)");
 	printf("Введите значение x: ");
-	scanf("%lf", &x1);
+	scanf("%d", &x1);
 	printf("Введите количество членов ряда N: ");
 	scanf("%d", &N);
 	printf("Введите точность вычисления eps: ");
@@ -125,7 +128,8 @@ void main(void)
 
 	//z3
 	char l;
-	do {
+	do 
+    {
 		char t;
 		printf("Это треугольник\n");
 		printf("Его нарисовать? <Да - y, Нет - введите n>\n");
@@ -143,5 +147,7 @@ void main(void)
 		}
 		printf("Повторить программу? Да - y , Нет - введите n>\n");
 		scanf(" %c", &l);
-	} while (l != 'n');
+	} 
+	while (l != 'n');
+	return 0;
 }
