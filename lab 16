@@ -1,0 +1,52 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+
+double* full_elements(double* array, int n)
+{
+	srand((unsigned)time(NULL));
+	for (int i = 0; i < n; i++)
+		array[i] = 0 + rand() % 41;
+	return array;
+}
+
+double* calc_elements(double* array, int n)
+{
+	for (int i = 0; i < n; i++)
+		array[i] = pow(array[i], 2);
+	return array;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+	double* array;
+	int size;
+	double a;
+	printf("Введите размера массива с клавиатуры:");
+	scanf("%d", &size);
+
+	double* ptr_array;
+
+	ptr_array = (double*)malloc(size * sizeof(double));
+
+	if (ptr_array == NULL)
+	{
+		puts("error");
+		return -1;
+	}
+	srand(time(NULL));
+
+	for (int i = 0; i < (size); i++)
+	{
+		printf("a[%d] =", i + 1);
+		scanf("%lf", &a);
+		ptr_array[i] = a;
+	}
+
+
+	full_elements(ptr_array, a);
+	calc_elements(ptr_array, a);
+
+}
