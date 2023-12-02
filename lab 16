@@ -18,11 +18,19 @@ double* calc_elements(double* array, int n)
 	return array;
 }
 
+double* OtrElem(double* array, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+
+	}
+}
+
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	double* array;
-	int size;
+	double* array, array2;
+	int size, A, size2;
 	double a;
 	printf("Введите размера массива с клавиатуры:");
 	scanf("%d", &size);
@@ -40,7 +48,7 @@ int main()
 
 	for (int i = 0; i < (size); i++)
 	{
-		printf("a[%d] =", i + 1);
+		printf("a[%d] =", i );
 		scanf("%lf", &a);
 		ptr_array[i] = a;
 	}
@@ -48,5 +56,7 @@ int main()
 
 	full_elements(ptr_array, a);
 	calc_elements(ptr_array, a);
+	OtrElem(ptr_array, a);
 
+	printf("");
 }
