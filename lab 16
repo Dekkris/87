@@ -14,17 +14,10 @@ double* full_elements(double* array, int n)
 double* calc_elements(double* array, int n)
 {
 	for (int i = 0; i < n; i++)
-		array[i] = pow(array[i], 2);
+		array[i] = -1*(array[i]);
 	return array;
 }
 
-double* OtrElem(double* array, int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-
-	}
-}
 
 int main()
 {
@@ -52,11 +45,10 @@ int main()
 		scanf("%lf", &a);
 		ptr_array[i] = a;
 	}
-
+	printf("%d\n", calc_elements);
 
 	full_elements(ptr_array, a);
 	calc_elements(ptr_array, a);
-	OtrElem(ptr_array, a);
 
 	printf("");
 }
